@@ -1,0 +1,97 @@
+<p>股票編號</p>
+<form (ngSubmit)="searchNewStockSubmit(searchStockForm)" [formGroup]="searchStockForm" method="post">
+  <div class="form-group input-group col-xs-12 col-sm-12
+        col-md-12 col-lg-12">
+
+    <div class="form-group col-xs-3 col-sm-3
+        col-md-3 col-lg-3">
+      股票編號:<input class="form-control" type="text" name="stockNum" id="stockNum" formControlName="stockNum">
+    </div>
+  </div>
+  <div class="form-group col-xs-12 col-sm-12
+      col-md-6 col-lg-6">
+          取得
+          <select class="form-control" formControlName="periodWeek">
+            <option *ngFor="let periodWeek of periodWeekes" [value]=periodWeek>{{periodWeek}}</option>
+          </select>
+          週的持股量資料
+  </div>
+  <input class="form-control" type="hidden" name="whichPage" id="whichPage"  formControlName="whichPage">
+  <button class="btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6"
+          type="submit">
+    搜尋
+  </button>
+</form>
+<div class="form-group col-xs-12 col-sm-12
+col-md-12 col-lg-12" *ngIf="stockDetail!=''">
+    
+  </div>
+<div class="form-group col-xs-12 col-sm-12
+col-md-12 col-lg-12" *ngIf="stockDetail!=''">
+    
+  </div>
+<div class="form-group col-xs-12 col-sm-12
+col-md-12 col-lg-12" *ngIf="stockDetail!=''">
+    <h4>{{stockDetail}}</h4>
+  </div>
+<div class="form-group col-xs-12 col-sm-12
+col-md-12 col-lg-12" *ngFor="let unitChart of allChart let i =index">
+      <h5>{{companyDetail[i]}}</h5>
+        <div echarts [options]="unitChart" class="demo-chart"></div>
+</div>
+
+
+<div class="form-group col-xs-12 col-sm-12
+col-md-6 col-lg-6" *ngIf="loadingSearchProgress==true">
+  Loading......
+</div>
+<div class="form-group col-xs-12 col-sm-12
+col-md-6 col-lg-6" *ngIf="nowEndOrNot==0">
+    
+  <button (click)="searchMoreCompany()" class="btn btn-primary col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    更多
+  </button>
+
+</div>
+<!--
+<div echarts [options]="chartOption" class="demo-chart"></div>
+
+<div class="form-group col-xs-12 col-sm-12
+        col-md-12 col-lg-12" *ngFor="let allCompanyUnit of allCompanyList">
+        <div class="form-group col-xs-6 col-sm-6
+        col-md-4 col-lg-4">
+        {{allCompanyUnit.allDayDiff}}
+      </div>
+      <div class="form-group col-xs-6 col-sm-6
+        col-md-4 col-lg-4">
+        {{allCompanyUnit.companyid}}
+      </div>
+      <div class="form-group col-xs-6 col-sm-6
+        col-md-4 col-lg-4">
+        {{allCompanyUnit.companyname}}
+      </div>
+      <div class="form-group col-xs-12 col-sm-12
+      col-md-12 col-lg-12" *ngFor="let allDayHoldingUnit of allCompanyUnit.allDayHoldingCount">
+        aaaaaaaaaaaaaa
+        <div class="form-group col-xs-6 col-sm-6
+        col-md-4 col-lg-4">
+        
+        <div class="form-group col-xs-6 col-sm-6
+          col-md-4 col-lg-4">
+          {{allDayHoldingUnit.holdingDate}}
+        </div>
+        <div class="form-group col-xs-6 col-sm-6
+          col-md-4 col-lg-4">
+          {{allDayHoldingUnit.holdingCount}}
+        </div>
+        <div class="form-group col-xs-6 col-sm-6
+          col-md-4 col-lg-4">
+          {{allDayHoldingUnit.holdingDiff}}
+        </div>
+
+        </div>
+
+    </div>
+
+</div>
+-->
