@@ -28,7 +28,7 @@ namespace v2
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseUrls("http://0.0.0.0/").UseStartup<Startup>();
+                    webBuilder.UseUrls("http://0.0.0.0/").UseStartup<Startup>(); 
                 });
     }
 }
